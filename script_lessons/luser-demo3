@@ -1,0 +1,52 @@
+#!/bin/bash
+#Display UID and Username and user executing this script
+#display if the user is kali
+
+
+#Display th UID
+
+echo "your User ID is: ${UID}"
+#Only display if the UID does not match 1000
+UID_TO_TEST_FOR='1000'
+
+if [[ "${UID}" -ne "${UID_TO_TEST_FOR}" ]] 
+then
+	echo "Your id does not match ${UID_TO_TEST_FOR}."
+	exit 1
+fi
+
+#Display Username
+
+USER_NAME=`id -un`
+
+#Test if the command is succeded
+
+if [[ "${?}" -ne 0 ]]
+then
+	echo 'The id command did not execute succcessfully.'
+	exit 1
+fi
+echo "Your username is ${USER_NAME}"
+
+
+#You can use a string test conditionnal
+USER_NAME_TO_TEST_FOR='kali'
+if [[ "${USER_NAME}" = "${USER_NAME_TO_TEST_FOR}" ]]
+then
+	echo "You username matches ${USER_NAME_TO_TEST_FOR}."
+fi
+
+
+
+#Test fot !=(not equal) for the string
+
+if [[ "${USER_NAME}" != "${USER_NAME_TO_TEST_FOR}" ]]
+then 
+	echo "Your username does not match ${USER_NAME_TO_TEST_FOR}"
+	exit 1
+fi
+
+exit 0
+
+
+#Test for !=(not equal) for the string

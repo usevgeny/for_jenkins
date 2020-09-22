@@ -1,0 +1,25 @@
+#!/bin/bash
+#Display the UID and Username of the user executing this script
+#display if the user executing the script is the root user or not
+
+
+#display the UID
+
+echo "Your UID is ${UID}"
+
+#display the Username
+
+#NAME=`whoami`
+#echo "Your name is ${NAME}"
+
+USER_NAME=$(id -un)
+echo "Your username is $USER_NAME"
+
+#display if the user is the root or not
+if [[ "$UID" -eq 0 ]]
+then
+	echo 'You are root.'
+else	
+	echo 'YOu are not root.'
+fi
+
